@@ -1,16 +1,21 @@
 package com.allmap.repository;
 
 import com.allmap.domain.Restaurant;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class MemoryRestaurantRepository implements RestaurantRepository{
+@Repository
+public class MemoryRestaurantRepository implements RestaurantRepository {
 
     private Map<Long, Restaurant> store = new HashMap<>();
+
     @Override
-    public void save(Long restId, Restaurant restaurant) {
-        store.put(restId, restaurant);
+    public void save(Restaurant restaurant) {
+        store.put(restaurant.getId(), restaurant);
     }
 
     @Override
@@ -18,7 +23,12 @@ public class MemoryRestaurantRepository implements RestaurantRepository{
         return store.get(restId);
     }
 
-    public void clear(){
+    @Override
+    public List<Restaurant> findByAll() {
+        return new ArrayList<>(store.values());
+    }
+
+    public void clear() {
         store.clear();
     }
 }
