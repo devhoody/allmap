@@ -19,7 +19,7 @@
             </thead>
             <tbody>
             <tr th:each="rest : ${rests}">
-                <td><a href="rest.html" th:text="${rest.id}">식당id</a></td>
+                <td th:text="${rest.id}">식당id</a></td>
                 <td><a href="rest.html" th:href="@{/rest/{restId}(restId=${rest.id})}" th:text="${rest.restName}">호식당</a></td>
                 <td th:text="${rest.address}">마포구</td>
                 <td th:text="${rest.youtuber}">먹텐</td>
