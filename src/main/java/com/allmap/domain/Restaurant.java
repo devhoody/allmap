@@ -5,13 +5,15 @@ import lombok.Data;
 @Data
 public class Restaurant {
     private Long id;
-    private String name;
+    private String restName;
     private String address;
     private String youtuber;
 
-    public Restaurant(Long id, String name, String address, String youtuber) {
-        this.id = id;
-        this.name = name;
+    public Restaurant() {
+    }
+
+    public Restaurant(String restName, String address, String youtuber) {
+        this.restName = restName;
         this.address = address;
         this.youtuber = youtuber;
     }

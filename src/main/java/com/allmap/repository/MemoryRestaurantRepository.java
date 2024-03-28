@@ -12,9 +12,12 @@ import java.util.Map;
 public class MemoryRestaurantRepository implements RestaurantRepository {
 
     private Map<Long, Restaurant> store = new HashMap<>();
+    private static long sequence = 0L; //static
+
 
     @Override
     public void save(Restaurant restaurant) {
+        restaurant.setId(++sequence);
         store.put(restaurant.getId(), restaurant);
     }
 
