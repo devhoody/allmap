@@ -32,6 +32,16 @@ public class MemoryRestaurantRepository implements RestaurantRepository {
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public Restaurant edit(Restaurant restaurant) {
+        Restaurant restaurant1 = store.get(restaurant.getId());
+        restaurant1.setRestName(restaurant.getRestName());
+        restaurant1.setAddress(restaurant.getAddress());
+        restaurant1.setYoutuber(restaurant.getYoutuber());
+        store.put(restaurant.getId(), restaurant1);
+        return restaurant1;
+    }
+
     public void clear() {
         store.clear();
     }

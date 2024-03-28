@@ -27,4 +27,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     public List<Restaurant> findAll() {
         return restaurantRepository.findByAll();
     }
+
+    @Override
+    public Restaurant edit(Restaurant restaurant) {
+        return restaurantRepository.edit(restaurant);
+    }
 }

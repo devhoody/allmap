@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface RestaurantService {
     Restaurant reg(Restaurant restaurant);
+
     Restaurant findById(Long restaurantId);
 
     List<Restaurant> findAll();
+
+    Restaurant edit(Restaurant restaurant);
 }

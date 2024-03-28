@@ -10,4 +10,7 @@ public interface RestaurantRepository {
     Restaurant findById(Long restId);
 
     List<Restaurant> findByAll();
+
+    Restaurant edit(Restaurant restaurant);
+
 }

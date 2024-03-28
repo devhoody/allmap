@@ -26,14 +26,25 @@ class MemoryRestaurantRepositoryTest {
         //given
         Restaurant restaurant = new Restaurant("평양냉면", "마포구", "먹을텐데");
         //when
-        restaurantRepository.save(restaurant);
-        Restaurant findRestaurant = restaurantRepository.findById(1L);
+        Restaurant savedRest = restaurantRepository.save(restaurant);
+        Restaurant findRestaurant = restaurantRepository.findById(savedRest.getId());
         //then
         assertThat(findRestaurant.getRestName()).isEqualTo("평양냉면");
     }
 
     @Test
-    void findById() {
+    @DisplayName("식당아이디별조회")
+    void 식당아이디별조회() {
+        //given
+        Restaurant restaurant = new Restaurant("평양냉면", "마포구", "먹을텐데");
+        Restaurant savedRest = restaurantRepository.save(restaurant);
+        Long id = savedRest.getId();
+
+        //when
+        Restaurant findRest = restaurantRepository.findById(id);
+
+        //then
+        assertThat(findRest.getRestName()).isEqualTo(restaurant.getRestName());
     }
 
     @Test
@@ -50,5 +61,23 @@ class MemoryRestaurantRepositoryTest {
 
         //then
         assertThat(list.size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("식당수정")
+    void edit() {
+        //given
+        Restaurant restaurant1 = new Restaurant("restA", "마포구", "호사장");
+        Restaurant savedRest = restaurantRepository.save(restaurant1);
+        savedRest.setRestName("restB");
+        savedRest.setYoutuber("먹을텐데");
+        savedRest.setAddress("서울시");
+        //when
+        Restaurant editRest = restaurantRepository.edit(savedRest);
+
+        //then
+        assertThat(editRest.getRestName()).isEqualTo("restB");
+        assertThat(editRest.getAddress()).isEqualTo("서울시");
+        assertThat(editRest.getYoutuber()).isEqualTo("먹을텐데");
     }
 }

@@ -11,7 +11,6 @@
             <h2 th:if="${param.status}" th:text="저장완료"></h2>
         </div>
 
-
         <div>
             <label for="restId" th:text="식당ID">ID</label>
             <input type="text" id="restId" name="restId" th:value="${rest.id}" readonly>
@@ -28,6 +27,12 @@
             <label for="youtuber" th:text="식당ID">ID</label>
             <input type="text" id="youtuber" name="youtuber" th:value="${rest.youtuber}" readonly>
         </div>
+    </div>
+    <div>
+        <button th:onclick="|location.href='@{/rest/{restId}/edit(restId=${rest.id})}'|"
+                th:text="수정">수정</button>
+        <button th:onclick="|location.href='@{/rest/list}'|"
+                th:text="목록으로">목록으로</button>
     </div>
 </body>
 </html>
