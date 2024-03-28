@@ -16,9 +16,10 @@ public class MemoryRestaurantRepository implements RestaurantRepository {
 
 
     @Override
-    public void save(Restaurant restaurant) {
+    public Restaurant save(Restaurant restaurant) {
         restaurant.setId(++sequence);
         store.put(restaurant.getId(), restaurant);
+        return store.get(restaurant.getId());
     }
 
     @Override

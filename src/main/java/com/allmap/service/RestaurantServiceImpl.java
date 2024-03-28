@@ -14,8 +14,8 @@ public class RestaurantServiceImpl implements RestaurantService {
     RestaurantRepository restaurantRepository;
 
     @Override
-    public void reg(Restaurant restaurant) {
-        restaurantRepository.save(restaurant);
+    public Restaurant reg(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
     }
 
     @Override
