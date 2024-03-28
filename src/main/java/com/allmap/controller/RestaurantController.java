@@ -9,10 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -41,13 +39,23 @@ public class RestaurantController {
     public String add(@RequestParam("restName") String restName,
                       @RequestParam("address") String address,
                       @RequestParam("youtuber") String youtuber,
-                      Model model){
+                      RedirectAttributes redirectAttributes){
         Restaurant restaurant = new Restaurant(restName,address,youtuber);
-        restaurantService.reg(restaurant);
+        Restaurant savedRestaurant = restaurantService.reg(restaurant);
+
+        redirectAttributes.addAttribute("restId", savedRestaurant.getId());
+        redirectAttributes.addAttribute("status", true);
 
         log.info("저장된 식당정보 = " + restaurant.toString());
 
-        return "redirect:./list";
+        return "redirect:/rest/{restId}";
+    }
+
+    @GetMapping("{restId}")
+    public String rest(@PathVariable Long restId, Model model){
+        Restaurant findRestaurant = restaurantService.findById(restId);
+        model.addAttribute("rest", findRestaurant);
+        return "rest/rest";
     }
 
 

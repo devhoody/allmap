@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>식당 상세정보</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h2 th:if="${param.status}" th:text="저장완료"></h2>
+        </div>
+
+
+        <div>
+            <label for="restId" th:text="식당ID">ID</label>
+            <input type="text" id="restId" name="restId" th:value="${rest.id}" readonly>
+        </div>
+        <div>
+            <label for="restName" th:text="식당ID">ID</label>
+            <input type="text" id="restName" name="restName" th:value="${rest.restName}" readonly>
+        </div>
+        <div>
+            <label for="address" th:text="식당ID">ID</label>
+            <input type="text" id="address" name="address" th:value="${rest.address}" readonly>
+        </div>
+        <div>
+            <label for="youtuber" th:text="식당ID">ID</label>
+            <input type="text" id="youtuber" name="youtuber" th:value="${rest.youtuber}" readonly>
+        </div>
+    </div>
+</body>
+</html>
