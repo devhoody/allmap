@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>식당 등록페이지</title>
+</head>
+<body>
+    <div>
+        <h1>식당 등록 페이지</h1>
+    </div>
+
+    <form th:action method="post">
+        <div>
+            <label for="restName">상품명</label>
+            <input type="text" name="restName" id="restName">
+        </div>
+        <div>
+            <label for="address">주소</label>
+            <input type="text" name="address" id="address">
+        </div>
+        <div>
+            <label for="youtuber">유튜버</label>
+            <input type="text" name="youtuber" id="youtuber">
+        </div>
+
+        <div>
+            <button type="submit">식당 등록</button>
+        </div>
+        <div>
+            <button onclick="location.href='rests.html'"
+                    th:onclick="|location.href='@{/rest/list}'|"
+                    type="button"
+                    >취소</button>
+        </div>
+    </form>
+
+</body>
+</html>

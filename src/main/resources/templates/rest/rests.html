@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>식당 리스트</h1>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th th:text="Id">ID</th>
+                <th th:text="식당명">식당명</th>
+                <th th:text="주소">주소</th>
+                <th th:text="유튜버">유튜버</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rest : ${rests}">
+                <td><a href="rest.html" th:text="${rest.id}">식당id</a></td>
+                <td><a href="rest.html" th:text="${rest.restName}">호식당</a></td>
+                <td th:text="${rest.address}">마포구</td>
+                <td th:text="${rest.youtuber}">먹텐</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="add">등록</a>
+    </div>
+</body>
+</html>
